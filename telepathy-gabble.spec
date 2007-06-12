@@ -10,12 +10,12 @@ Source0:	http://telepathy.freedesktop.org/releases/telepathy-gabble/%{name}-%{ve
 URL:		http://telepathy.freedesktop.org/wiki/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.8
-BuildRequires:	dbus-glib-devel >= 0.61
+BuildRequires:	dbus-glib-devel >= 0.72
 BuildRequires:	libtool
 BuildRequires:	libxslt-progs
-BuildRequires:	loudmouth-devel
+BuildRequires:	loudmouth-devel >= 1.1.1
 BuildRequires:	pkgconfig
-BuildRequires:	telepathy-glib-devel
+BuildRequires:	telepathy-glib-devel >= 0.5.10
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
