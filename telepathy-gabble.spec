@@ -1,21 +1,27 @@
 Summary:	A Telepathy connection manager for Jabber/XMPP
 Summary(pl.UTF-8):	Zarządca połączeń Telepathy dla Jabbera/XMPP
 Name:		telepathy-gabble
-Version:	0.7.7
+Version:	0.7.23
 Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://telepathy.freedesktop.org/releases/telepathy-gabble/%{name}-%{version}.tar.gz
-# Source0-md5:	2994cc2ad9a18179aad202b21364a842
+# Source0-md5:	93d18695fe852356ed17df993497a43f
 URL:		http://telepathy.freedesktop.org/wiki/
 BuildRequires:	autoconf >= 2.59
-BuildRequires:	automake >= 1:1.8
-BuildRequires:	dbus-glib-devel >= 0.72
+BuildRequires:	automake >= 1:1.9
+BuildRequires:	dbus-devel >= 1.1.0
+BuildRequires:	dbus-glib-devel >= 0.78
+BuildRequires:	glib2-devel >= 1:2.16.0
+BuildRequires:	libsoup-devel >= 2.4.0
 BuildRequires:	libtool
 BuildRequires:	libxslt-progs
-BuildRequires:	loudmouth-devel >= 1.1.1
+BuildRequires:	loudmouth-devel >= 1.3.2
 BuildRequires:	pkgconfig
-BuildRequires:	telepathy-glib-devel >= 0.5.14
+BuildRequires:	python
+BuildRequires:	telepathy-glib-devel >= 0.7.26
+Requires:	dbus >= 1.1.0
+Requires:	dbus-glib >= 0.78
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -41,6 +47,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+rm -rf $RPM_BUILD_ROOT%{_datadir}/doc/telepathy-gabble
 
 %clean
 rm -rf $RPM_BUILD_ROOT
