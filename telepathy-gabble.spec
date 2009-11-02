@@ -12,7 +12,8 @@ BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	dbus-devel >= 1.1.0
 BuildRequires:	dbus-glib-devel >= 0.78
-BuildRequires:	glib2-devel >= 1:2.16.0
+BuildRequires:	glib2-devel >= 1:2.22.0
+BuildRequires:	gnutls-devel >= 2.8.2
 BuildRequires:	libsoup-devel >= 2.4.0
 BuildRequires:	libtool
 BuildRequires:	libxslt-progs
@@ -39,7 +40,8 @@ Zarządca połączeń pozwalający połączyć się Telepathy z Jabberem/XMPP.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure
+%configure \
+	--with-wocky-tls=gnutls
 %{__make}
 
 %install
