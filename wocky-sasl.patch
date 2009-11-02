@@ -1,0 +1,42 @@
+From: Vivek Dasmohapatra <vivek@collabora.co.uk>
+Date: Mon, 2 Nov 2009 15:37:50 +0000 (+0000)
+Subject: SASL challenge tokens may be separated by optional whitespace, cope with these.
+X-Git-Url: http://git.collabora.co.uk/?p=user%2Fvivek%2Fwocky.git;a=commitdiff_plain;h=a3f332952c94e59d49c7d265f91cacc04eab424d
+
+SASL challenge tokens may be separated by optional whitespace, cope with these.
+---
+
+diff --git a/wocky/wocky-sasl-auth.c b/wocky/wocky-sasl-auth.c
+index a010370..925db62 100644
+--- a/wocky/wocky-sasl-auth.c
++++ b/wocky/wocky-sasl-auth.c
+@@ -429,6 +429,10 @@ digest_md5_challenge_to_hash (const gchar * challenge)
+     keyend = c;
+     c++;
+ 
++    /* eat any whitespace between the '=' and the '"' */
++    for (; isspace (*c); c++)
++      ;
++
+     if (*c == '"')
+       {
+         c++;
+@@ -450,10 +454,18 @@ digest_md5_challenge_to_hash (const gchar * challenge)
+         val = g_strndup (valstart, c - valstart);
+       }
+ 
++    /* the key is unguarded by '"' delimiters so any whitespace *
++     * at either end should be discarded as irrelevant          */
+     key = g_strndup (keystart, keyend - keystart);
++    key = g_strstrip (key);
+ 
++    DEBUG ("challenge '%s' = '%s'", key, val);
+     g_hash_table_insert (result, key, val);
+ 
++    /* eat any whitespace between the '"' and the next ',' */
++    for (; isspace (*c); c++)
++      ;
++
+     if (*c == ',')
+       c++;
+   } while (*c != '\0');

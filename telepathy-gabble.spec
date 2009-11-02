@@ -8,6 +8,7 @@ Group:		Libraries
 Source0:	http://telepathy.freedesktop.org/releases/telepathy-gabble/%{name}-%{version}.tar.gz
 # Source0-md5:	e862fb46c0a895c6b37339459edc8ae1
 URL:		http://telepathy.freedesktop.org/wiki/
+Patch0:		wocky-sasl.patch
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	dbus-devel >= 1.1.0
@@ -33,6 +34,9 @@ Zarządca połączeń pozwalający połączyć się Telepathy z Jabberem/XMPP.
 
 %prep
 %setup -q
+cd lib/ext/wocky
+%patch0 -p1
+cd ../../..
 
 %build
 %{__libtoolize}
