@@ -1,14 +1,13 @@
 Summary:	A Telepathy connection manager for Jabber/XMPP
 Summary(pl.UTF-8):	Zarządca połączeń Telepathy dla Jabbera/XMPP
 Name:		telepathy-gabble
-Version:	0.9.2
+Version:	0.9.3
 Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://telepathy.freedesktop.org/releases/telepathy-gabble/%{name}-%{version}.tar.gz
-# Source0-md5:	e862fb46c0a895c6b37339459edc8ae1
+# Source0-md5:	1755f785f84ec99fba2a406845d1df5d
 URL:		http://telepathy.freedesktop.org/wiki/
-Patch0:		wocky-sasl.patch
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	dbus-devel >= 1.1.0
@@ -34,9 +33,6 @@ Zarządca połączeń pozwalający połączyć się Telepathy z Jabberem/XMPP.
 
 %prep
 %setup -q
-cd lib/ext/wocky
-%patch0 -p1
-cd ../../..
 
 %build
 %{__libtoolize}
