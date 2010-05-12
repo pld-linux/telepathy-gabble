@@ -20,6 +20,7 @@ BuildRequires:	libxslt-progs
 BuildRequires:	pkgconfig
 BuildRequires:	python
 BuildRequires:	telepathy-glib-devel >= 0.7.37
+BuildRequires:	which
 Requires:	dbus >= 1.1.0
 Requires:	dbus-glib >= 0.78
 Requires:	telepathy-glib >= 0.7.37
