@@ -1,12 +1,15 @@
+# TODO:
+# - Add static package for gabble.la
+#
 Summary:	A Telepathy connection manager for Jabber/XMPP
 Summary(pl.UTF-8):	Zarządca połączeń Telepathy dla Jabbera/XMPP
 Name:		telepathy-gabble
-Version:	0.10.3
+Version:	0.11.1
 Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://telepathy.freedesktop.org/releases/telepathy-gabble/%{name}-%{version}.tar.gz
-# Source0-md5:	4aae1249cecb5a99708a1558625fd1ab
+# Source0-md5:	5ebdd4b29de1bd0715f4f025ab00163c
 URL:		http://telepathy.freedesktop.org/wiki/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
@@ -21,11 +24,14 @@ BuildRequires:	libuuid-devel
 BuildRequires:	libxslt-progs
 BuildRequires:	pkgconfig
 BuildRequires:	python
-BuildRequires:	telepathy-glib-devel >= 0.11.14
+BuildRequires:	telepathy-glib-devel >= 0.13.4
 BuildRequires:	which
+Requires:	ca-certificates
 Requires:	dbus >= 1.1.0
 Requires:	dbus-glib >= 0.78
-Requires:	telepathy-glib >= 0.11.14
+Requires:	libtelepathy
+Requires:	libtelepathy-devel
+Requires:	telepathy-glib >= 0.13.4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -43,7 +49,8 @@ Zarządca połączeń pozwalający połączyć się Telepathy z Jabberem/XMPP.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure
+%configure \
+	--with-ca-file=%{_sysconfdir}/certs/ca-certificates.crt
 %{__make}
 
 %install
