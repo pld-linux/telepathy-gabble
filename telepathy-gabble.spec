@@ -4,12 +4,12 @@
 Summary:	A Telepathy connection manager for Jabber/XMPP
 Summary(pl.UTF-8):	Zarządca połączeń Telepathy dla Jabbera/XMPP
 Name:		telepathy-gabble
-Version:	0.11.2
+Version:	0.11.4
 Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://telepathy.freedesktop.org/releases/telepathy-gabble/%{name}-%{version}.tar.gz
-# Source0-md5:	37c8a775a50c2d4ed3b9f7e4d0ff79c2
+# Source0-md5:	02c8c0c0a0030ee75997d462c97f0ab0
 URL:		http://telepathy.freedesktop.org/wiki/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
@@ -24,14 +24,14 @@ BuildRequires:	libuuid-devel
 BuildRequires:	libxslt-progs
 BuildRequires:	pkgconfig
 BuildRequires:	python
-BuildRequires:	telepathy-glib-devel >= 0.13.4
+BuildRequires:	telepathy-glib-devel >= 0.13.9
 BuildRequires:	which
 Requires:	ca-certificates
 Requires:	dbus >= 1.1.0
 Requires:	dbus-glib >= 0.78
 Requires:	libtelepathy
 Requires:	libtelepathy-devel
-Requires:	telepathy-glib >= 0.13.4
+Requires:	telepathy-glib >= 0.13.9
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
