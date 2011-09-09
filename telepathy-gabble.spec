@@ -3,7 +3,7 @@ Summary(pl.UTF-8):	Zarządca połączeń Telepathy dla Jabbera/XMPP
 Name:		telepathy-gabble
 # NOTE: 0.11.x is development branch
 Version:	0.10.5
-Release:	2
+Release:	3
 License:	LGPL
 Group:		Libraries
 Source0:	http://telepathy.freedesktop.org/releases/telepathy-gabble/%{name}-%{version}.tar.gz
