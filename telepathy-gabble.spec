@@ -1,34 +1,36 @@
 Summary:	A Telepathy connection manager for Jabber/XMPP
 Summary(pl.UTF-8):	Zarządca połączeń Telepathy dla Jabbera/XMPP
 Name:		telepathy-gabble
-# NOTE: 0.11.x is development branch
-Version:	0.10.5
-Release:	3
+# NOTE: 0.15.x is development branch
+Version:	0.14.0
+Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://telepathy.freedesktop.org/releases/telepathy-gabble/%{name}-%{version}.tar.gz
-# Source0-md5:	6d3e07354fb6d3ea5f8375e7cf776a27
+# Source0-md5:	73afa5533833d176b9b82b96351efe63
 URL:		http://telepathy.freedesktop.org/wiki/
 BuildRequires:	autoconf >= 2.59
-BuildRequires:	automake >= 1:1.11
+BuildRequires:	automake >= 1:1.9
+BuildRequires:	cyrus-sasl-devel
 BuildRequires:	dbus-devel >= 1.1.0
 BuildRequires:	dbus-glib-devel >= 0.82
-BuildRequires:	glib2-devel >= 1:2.24.0
-BuildRequires:	gnutls-devel >= 2.8.2
+BuildRequires:	glib2-devel >= 1:2.28.0
 BuildRequires:	libnice-devel >= 0.0.11
 BuildRequires:	libsoup-devel >= 2.4.0
 BuildRequires:	libtool
 BuildRequires:	libuuid-devel
+BuildRequires:	libxml-devel
 BuildRequires:	libxslt-progs
+BuildRequires:	openssl-devel >= 0.9.8g
 BuildRequires:	pkgconfig
 BuildRequires:	python
-BuildRequires:	telepathy-glib-devel >= 0.12.0
-BuildRequires:	which
 BuildRequires:	sqlite3-devel
+BuildRequires:	telepathy-glib-devel >= 0.15.9
+BuildRequires:	which
 Requires:	ca-certificates
 Requires:	dbus >= 1.1.0
 Requires:	dbus-glib >= 0.82
-Requires:	telepathy-glib >= 0.12.0
+Requires:	telepathy-glib >= 0.15.9
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -48,7 +50,8 @@ Zarządca połączeń pozwalający połączyć się Telepathy z Jabberem/XMPP.
 %{__automake}
 %configure \
 	--disable-silent-rules \
-	--with-ca-certificates=%{_sysconfdir}/certs/ca-certificates.crt
+	--with-ca-certificates=%{_sysconfdir}/certs/ca-certificates.crt \
+	--with-tls=openssl
 %{__make}
 
 %install
