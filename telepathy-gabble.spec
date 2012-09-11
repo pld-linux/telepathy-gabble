@@ -2,12 +2,12 @@ Summary:	A Telepathy connection manager for Jabber/XMPP
 Summary(pl.UTF-8):	Zarządca połączeń Telepathy dla Jabbera/XMPP
 Name:		telepathy-gabble
 # NOTE: 0.17.x is development branch
-Version:	0.16.2
+Version:	0.16.3
 Release:	1
-License:	LGPL
+License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://telepathy.freedesktop.org/releases/telepathy-gabble/%{name}-%{version}.tar.gz
-# Source0-md5:	d79fc12524e9b68e9a1a833960f97d01
+# Source0-md5:	8fde66e4bf6bd01b0c785784a6928381
 URL:		http://telepathy.freedesktop.org/wiki/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.11
@@ -62,7 +62,10 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/telepathy/gabble-0/{lib,plugins}/*.la
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/telepathy/gabble-0/plugins/*.la
+# private libraries, API not exported
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/telepathy/gabble-0/lib/lib{gabble-plugins,wocky}.{so,la}
+# packaged as %doc
 %{__rm} -r $RPM_BUILD_ROOT%{_datadir}/doc/telepathy-gabble
 
 %clean
@@ -70,16 +73,14 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog README
+%doc AUTHORS ChangeLog README docs/*.html
 %attr(755,root,root) %{_bindir}/telepathy-gabble-xmpp-console
 %attr(755,root,root) %{_libdir}/telepathy-gabble
 %dir %{_libdir}/telepathy
 %dir %{_libdir}/telepathy/gabble-0
 %dir %{_libdir}/telepathy/gabble-0/lib
 %attr(755,root,root) %{_libdir}/telepathy/gabble-0/lib/libgabble-plugins-%{version}.so
-%attr(755,root,root) %{_libdir}/telepathy/gabble-0/lib/libgabble-plugins.so
 %attr(755,root,root) %{_libdir}/telepathy/gabble-0/lib/libwocky-telepathy-gabble-%{version}.so
-%attr(755,root,root) %{_libdir}/telepathy/gabble-0/lib/libwocky.so
 %dir %{_libdir}/telepathy/gabble-0/plugins
 %attr(755,root,root) %{_libdir}/telepathy/gabble-0/plugins/libconsole.so
 %attr(755,root,root) %{_libdir}/telepathy/gabble-0/plugins/libgateways.so
