@@ -1,20 +1,19 @@
 Summary:	A Telepathy connection manager for Jabber/XMPP
 Summary(pl.UTF-8):	Zarządca połączeń Telepathy dla Jabbera/XMPP
 Name:		telepathy-gabble
-# NOTE: 0.17.x is development branch
-Version:	0.16.4
+Version:	0.18.0
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://telepathy.freedesktop.org/releases/telepathy-gabble/%{name}-%{version}.tar.gz
-# Source0-md5:	dcaa7a18839ede7311d3d41837e7e64a
+# Source0-md5:	16547062277c0e92bf1164019d9dcae7
 URL:		http://telepathy.freedesktop.org/wiki/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	cyrus-sasl-devel
 BuildRequires:	dbus-devel >= 1.1.0
 BuildRequires:	dbus-glib-devel >= 0.82
-BuildRequires:	glib2-devel >= 1:2.30
+BuildRequires:	glib2-devel >= 1:2.32
 BuildRequires:	libnice-devel >= 0.0.11
 BuildRequires:	libsoup-devel >= 2.4.0
 BuildRequires:	libtool
@@ -24,14 +23,14 @@ BuildRequires:	openssl-devel >= 0.9.8g
 BuildRequires:	pkgconfig
 BuildRequires:	python >= 1:2.5
 BuildRequires:	sqlite3-devel
-BuildRequires:	telepathy-glib-devel >= 0.18.0
+BuildRequires:	telepathy-glib-devel >= 0.19.9
 BuildRequires:	which
 Requires:	ca-certificates
 Requires:	dbus >= 1.1.0
 Requires:	dbus-glib >= 0.82
-Requires:	glib2 >= 1:2.30
+Requires:	glib2 >= 1:2.32
 Requires:	libnice >= 0.0.11
-Requires:	telepathy-glib >= 0.18.0
+Requires:	telepathy-glib >= 0.19.9
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -73,7 +72,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog README docs/*.html
+%doc AUTHORS ChangeLog NEWS README docs/*.html
 %attr(755,root,root) %{_bindir}/telepathy-gabble-xmpp-console
 %attr(755,root,root) %{_libdir}/telepathy-gabble
 %dir %{_libdir}/telepathy
