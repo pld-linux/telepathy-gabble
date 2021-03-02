@@ -8,7 +8,7 @@ Group:		Libraries
 Source0:	https://telepathy.freedesktop.org/releases/telepathy-gabble/%{name}-%{version}.tar.gz
 # Source0-md5:	64334f42b1822dbc22b823f22f9e968f
 Patch0:		%{name}-openssl-1.1.0.patch
-URL:		https://telepathy.freedesktop.org/wiki/
+URL:		https://telepathy.freedesktop.org/components/telepathy-gabble/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	cyrus-sasl-devel
