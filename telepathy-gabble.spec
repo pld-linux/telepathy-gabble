@@ -43,7 +43,7 @@ Zarządca połączeń pozwalający połączyć się Telepathy z Jabberem/XMPP.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P0 -p1
 
 %{__sed} -i -e '1s,/usr/bin/env python$,%{__python},' plugins/telepathy-gabble-xmpp-console
 
